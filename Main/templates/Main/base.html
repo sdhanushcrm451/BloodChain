@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Blood Chain{% endblock %}</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/css">
+        @media (max-width: 768px){
+            .brand-name{
+                font-size: 1.5rem;
+            }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        .mainnav{
+            background: red;
+        }
+        .links a{
+            font-size: 1.5rem;
+            color: white;
+        }
+        .links a:hover{
+            text-decoration: underline;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .links a:focus{
+
+            font-size: 1.5rem;
+            color: orange;
+        }
+        .footer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: red;
+            color: white;
+        }
+        .footer a code{
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .footer a code:hover{
+            text-decoration: underline;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .mform{
+            background: rgb(225, 225, 225 , .6);
+        }
+        .brand-name{
+            padding: 10px;
+            background: linear-gradient(to right,white 50%,black 50%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Add this CSS to the page or to your stylesheet */
+        .form-fields p {
+            margin-bottom: 1rem; /* Adds vertical space between input fields */
+        }
+
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md mainnav" style="background: red;color: white;padding: 40px;border-radius: 2px;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Brand Name -->
+                <div class="flex items-center" style="color:white;">
+                    <a href="{% url 'home' %}" class="text-xl font-semibold text-gray-800 hover:text-gray-900 brand-name" style="font-size: 3rem;">
+                        Blood Chain
+                    </a>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex space-x-4 items-center links">
+                    <a href="{% url 'home' %}" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                        Home
+                    </a>
+                    <a href="{% url 'donors' %}" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                        View Donors
+                    </a>
+                    <a href="{% url 'emergency' %}" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+                        Emergency
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="{% url 'home' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="{% url 'donors' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">View Donors</a>
+            <a href="{% url 'emergency' %}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Emergency</a>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container mx-auto mt-8">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    <br>
+<footer class="bg-red shadow-md footer">
+    <a href="https://wtkresumes.42web.io/portfolio/" target="_blank"><code>&copy; Dhanush S, 2024.</code></a>
+</footer>
+</body>
+</html>
